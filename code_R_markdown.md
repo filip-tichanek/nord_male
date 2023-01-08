@@ -1,25 +1,11 @@
----
-title: "Periodic and conditional survival trends in prostate, testicular and penile cancers in the nordic countries marking timing of improvements"
-subtitle: "Full R code"
-author: "Filip Tichanek, Asta Försti, Akseli Hemminki, Otto Hemminki, Kari Hemminki1"
-date: "January 08, 2023"
-output:
-  html_document: 
-    toc: yes
-    toc_float: yes
-    theme: journal
-    fig_caption: yes
-    keep_md: yes
-    number_sections: yes
-  word_document: default
-  toc: yes
-  toc_depth: 5
-  number_sections: yes
-  pdf_document: default
-urlcolor: blue
----
 
-\tableofcontents 
+# Periodic and conditional survival trends in prostate, testicular and penile cancers in the nordic countries marking timing of improvements"
+
+Full R code
+
+authors: Filip Tichanek, Asta Försti, Akseli Hemminki, Otto Hemminki, Kari Hemminki
+
+date: January 08, 2023
 
 
 Please, **cite as** [original article](*TO BE ADDED*) published in [*TO BE ADDED*]

@@ -9,7 +9,7 @@ output:
     toc_float: yes
     theme: journal
     fig_caption: yes
-    keep_md: yes
+    keep_md: no
     number_sections: yes
   word_document: default
   toc: yes
@@ -67,7 +67,7 @@ cola<-c(
   rgb(1,0.1,0.1,alpha=1),
   rgb(0.1,0.1,1,alpha=1),
   rgb(0, 0.6, 0.3,alpha=1),
-  rgb(0.7,0.7,0.1,alpha=1))
+  rgb(0.6,0.6,0,alpha=1))
 
 colb<-c(
   rgb(1,0.1,0.1,alpha=0.2),
@@ -142,7 +142,7 @@ summary(penis_inc_mor)
 
 ## Suppl. Figure - Incidence and Moratlity
 
-```{r, fig.height=6.5,fig.width=8.57, fig.cap="Incidence and Mortality in male cancers"}
+```{r, fig.height=7,fig.width=9, fig.cap="Incidence and Mortality in male cancers"}
 # Plotting - incidence -------------------------
 ## General setting and titles of plots
 m <- matrix(c(1 ,2 ,3,
@@ -187,7 +187,7 @@ repeat{
 data=testes_inc_mor;xx<-1
 repeat{
 smoothingSpline = smooth.spline(data$year, data[,xx], spar=spar, nknots=knot)
-lines(smoothingSpline,col=colc[xx],lty=1,lwd=2,lend=1)
+lines(smoothingSpline,col=cola[xx],lty=xx,lwd=2,lend=1)
 xx=xx+1;if(xx>4){break}}
 
 axis(2,las=2,cex.axis=1.4,at=seq(range[1],range[2],by=2),labels=c(range[1],
@@ -200,18 +200,6 @@ lines(c(xrange[1],xrange[2]),c(range[1],range[1]))
 title(xlab="Year", line=1, cex.lab=1.4,xpd=TRUE)
 text(1964,range[2]-0.05*scal,"a",cex=2.5)
 
-xx=1;yy=range[1]+scal*0.25
-rect(2000,yy+0.035*scal,2019,yy-0.21*scal,col="white",border="grey50",lwd=0.8)
-repeat{
-  lines(c(2001,2004),c(yy,yy),lwd=12,col=cola[xx],lend=1)
-  xx<-xx+1;yy=yy-(scal*0.058);if(xx>4){break}}
-
-
-xx=1;yy=range[1]+scal*0.25
-text(2011.5,yy,"Denmark",col=cola[xx],cex=1.25);xx=xx+1;yy=yy-(scal*0.058)
-text(2011.5,yy,"Finland",col=cola[xx],cex=1.25);xx=xx+1;yy=yy-(scal*0.058)
-text(2011.5,yy,"Norway",col=cola[xx],cex=1.25);xx=xx+1;yy=yy-(scal*0.058)
-text(2011.4,yy,"Sweden",col=cola[xx],cex=1.25);xx=xx+1;yy=yy-(scal*0.058)
 
 
 ## Plot of prostate cancer ----------------
@@ -235,7 +223,7 @@ repeat{
 data=prostate_inc_mor;xx<-1
 repeat{
   smoothingSpline = smooth.spline(data$year, data[,xx], spar=spar, nknots=knot)
-  lines(smoothingSpline,col=colc[xx],lty=1,lwd=2,lend=1)
+  lines(smoothingSpline,col=cola[xx],lty=xx,lwd=2,lend=1)
   xx=xx+1;if(xx>4){break}}
 
 axis(2,las=2,cex.axis=1.4,at=seq(range[1],range[2],by=2),labels=c(range[1],
@@ -269,7 +257,7 @@ repeat{
 data=penis_inc_mor;xx<-1
 repeat{
   smoothingSpline = smooth.spline(data$year, data[,xx], spar=spar, nknots=knot)
-  lines(smoothingSpline,col=colc[xx],lty=1,lwd=2,lend=1)
+  lines(smoothingSpline,col=cola[xx],lty=xx,lwd=2,lend=1)
   xx=xx+1;if(xx>4){break}}
 
 axis(2,las=2,cex.axis=1.4,at=seq(range[1],range[2],by=2),labels=c(range[1],
@@ -305,7 +293,7 @@ repeat{
 data=testes_inc_mor;xx<-5
 repeat{
   smoothingSpline = smooth.spline(data$year, data[,xx], spar=spar, nknots=knot)
-  lines(smoothingSpline,col=colc[xx-4],lty=1,lwd=2,lend=1)
+  lines(smoothingSpline,col=cola[xx-4],lty=xx-4,lwd=2,lend=1)
   xx=xx+1;if(xx>8){break}}
 
 axis(2,las=2,cex.axis=1.4,at=seq(range[1],range[2],by=2),
@@ -317,6 +305,20 @@ axis(side=1,las=1,cex.axis=1.4,at=c(seq(round(xrange[1]+5,-1),2020,by=10)),pos=r
 lines(c(xrange[1],xrange[2]),c(range[1],range[1]))
 title(xlab="Year", line=1, cex.lab=1.4,xpd=TRUE)
 text(1964,range[2]-0.05*scal,"d",cex=2.5)
+
+
+xx=1;yy=range[1]+scal*0.85
+rect(1996,yy+0.035*scal,2019,yy-0.21*scal,col="white",border="grey50",lwd=0.8)
+repeat{
+  lines(c(1997,2004),c(yy,yy),lwd=2,col=cola[xx],lend=1, lty=xx)
+  xx<-xx+1;yy=yy-(scal*0.058);if(xx>4){break}}
+
+
+xx=1;yy=range[1]+scal*0.85
+text(2011.5,yy,"Denmark",col=cola[xx],cex=1.25);xx=xx+1;yy=yy-(scal*0.058)
+text(2011.5,yy,"Finland",col=cola[xx],cex=1.25);xx=xx+1;yy=yy-(scal*0.058)
+text(2011.5,yy,"Norway",col=cola[xx],cex=1.25);xx=xx+1;yy=yy-(scal*0.058)
+text(2011.4,yy,"Sweden",col=cola[xx],cex=1.25);xx=xx+1;yy=yy-(scal*0.058)
 
 ## Plot of prostate cancer ----------------
 range<-c(10,24);scal<-range[2]-range[1]
@@ -339,7 +341,7 @@ repeat{
 data=prostate_inc_mor;xx<-5
 repeat{
   smoothingSpline = smooth.spline(data$year, data[,xx], spar=spar, nknots=knot)
-  lines(smoothingSpline,col=colc[xx-4],lty=1,lwd=2,lend=1)
+  lines(smoothingSpline,col=cola[xx-4],lty=xx-4,lwd=2,lend=1)
   xx=xx+1;if(xx>8){break}}
 
 axis(2,las=2,cex.axis=1.4,at=seq(range[1],range[2],by=2),
@@ -374,7 +376,7 @@ repeat{
 data=penis_inc_mor;xx<-5
 repeat{
   smoothingSpline = smooth.spline(data$year, data[,xx], spar=spar, nknots=knot)
-  lines(smoothingSpline,col=colc[xx-4],lty=1,lwd=2,lend=1)
+  lines(smoothingSpline,col=cola[xx-4],lty=xx-4,lwd=2,lend=1)
   xx=xx+1;if(xx>8){break}}
 axis(2,las=2,cex.axis=1.4,at=c(range[1],range[2]),pos=xrange[1],tck= -0.025)
 #title(ylab="Incidence per 100,000 (ASR - World)", line=0.5, cex.lab=1.4)
@@ -425,6 +427,37 @@ urlfile="https://raw.githubusercontent.com/filip-tichanek/nord_male/main/source-
 penis_5y<-read.csv(url(urlfile),sep=",")
 ```
 
+### Colors
+```{r}
+# colors ---------------------------------------------------------
+
+alpha=1
+cola<-c(
+  rgb(0.7,0.7,0.1,alpha=alpha),
+  rgb(0.4,0,0,alpha=alpha),
+  rgb(0 ,0.2,1,alpha=alpha),
+  rgb(0, 0.6, 0.3,alpha=alpha)
+  )
+cola <- cola[c(3,2,1,4)]
+
+alpha=0.2
+colb<-c(
+  rgb(0.8,0.7,0.1,alpha=alpha),
+  rgb(0.4,0,0,alpha=alpha),
+  rgb(0 ,0.2,1,alpha=alpha),
+  rgb(0, 0.6, 0.3,alpha=alpha)
+  )
+colb <- colb[c(3,2,1,4)]
+
+alpha=0.8
+colc<-c(
+  rgb(0.8,0.7,0.1,alpha=alpha),
+  rgb(0.4,0,0,alpha=alpha),
+  rgb(0 ,0.2,1,alpha=alpha),
+  rgb(0, 0.6, 0.3,alpha=alpha)
+  )
+colc <- colc[c(3,2,1,4)]
+```
 
 ### Data wrangling
 
@@ -654,11 +687,9 @@ Function serves to identify *breaking points*, i.e. times when the annual change
 
 There is one additional argument 'arb' which should be zero except for the situation when the multiple breaking points overlap. The argument only move the breaking points by given value to avoid overlapping. 
 
-The function often gives warning: *## Error in xy.coords(x, y): 'x' and 'y' lengths differ*. Warning occurs when there is no *breaking point* in a given group and survival measure, ie, it is not real error. 
-
 ```{r message=FALSE, warning=FALSE}
 breakpo<-function(data,arb){ 
-  data<-data.frame((data[,-1] - data[,-ncol(data)])*10)
+ data<-data.frame((data[,-1] - data[,-ncol(data)])*10)
   data<-data.frame(data[,-1] - data[,-ncol(data)])
   data=sapply(data, function(p) quantile(p, probs = c(0.025,0.975,0.5)))
   cbinl<-c()
@@ -675,7 +706,6 @@ breakpo<-function(data,arb){
     if(x>(length(cbinl)-1)){break}}
   data<-data.frame(rbind(data,cbin));data[5,]<-yreal[c(2:499)]-0.049
   data[6,]<-1:498;data[4,51]<-1;data[4,449]<-1
-  
   row.names(data)<-c("cil","ciu","est","stat_change","year","timepoint")
   data2=t(data[,data[4,]==1])
   data2<-data.frame(data2)
@@ -695,13 +725,15 @@ breakpo<-function(data,arb){
       bx=bx+1
     }
     y=y+1;if(y>(dim(tr)[1]-1)){break}}
-  y<-1;repeat{
+  y<-1
+  try(repeat{
     lines(c(bp[y]+arb,bp[y]+arb),c(range[1],range[1]+0.025*scal),col=cola[xx],lwd=3.5,lend=1)
     lines(c(bp[y]+arb,bp[y]+arb),c(range[2],range[2]-0.025*scal),col=cola[xx],lwd=3.5,lend=1)
     lines(c(bp[y]+arb,bp[y]+arb),c(range[1],range[1]+0.999*scal),col=colc[xx],lwd=1,lend=1,lty=2)
-    y=y+1;if(y>length(bp)){break}}
-  print(bp)
-  print(tr)}
+    y=y+1;if(y>length(bp)){break}},silent=TRUE)
+ print(bp)
+ print(tr)
+  }
 ```
 
 
@@ -891,6 +923,7 @@ post_penis_swe_cond<-(post_penis_swe_5y/post_penis_swe_1y)*100
 
 ```{r, fig.height=5.75,fig.width=8.13, fig.cap="Fig. 1. Relative 1- , 5/1- (conditional) and 5-years survival in Danish men with (a) testicular, (b) prostate and (c) penile cancer. The vertical lines mark a significant change in the survival trends (‘breaking points’) and the bottom curves show estimated annual changes in survival. The curves are solid if there is >95% plausibility of the growth or decline. Shadow areas indicate 95% credible interval. All curves are color coded (see the insert)",error=TRUE,warning=FALSE,results=FALSE,message=FALSE}
 ## DEN figures -----------------
+
 m <- matrix(c(1,2,3
              ,4,6,8
              ,5,7,9), nrow = 3, ncol =3 ,byrow = TRUE)
@@ -2182,6 +2215,6 @@ title(xlab="Year", line=1.4, cex.lab=1.4,xpd=TRUE)
 
 # Reproducibility ticket
 ```{r error, warning=FALSE,results=TRUE,message=FALSE}
-  sessioninfo::session_info()
+  sessionInfo()
 ```
   
